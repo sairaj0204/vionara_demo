@@ -1,0 +1,42 @@
+export const DEFAULT_HERO_SLIDES = [
+  {
+    id: 'default-1',
+    image: '/hero-banner.png',
+    title: 'THE ART OF\nFINE JEWELLERY',
+    subtitle: 'Exploring the intersection of luxury and craftsmanship',
+    buttonText: 'Discover the Collection',
+    buttonLink: '/shop',
+  },
+  {
+    id: 'default-2',
+    image: '/hero-2.png',
+    title: 'CRAFTED FOR\nEVERY MOMENT',
+    subtitle: 'Where timeless elegance meets modern design',
+    buttonText: 'Shop Now',
+    buttonLink: '/shop',
+  },
+  {
+    id: 'default-3',
+    image: '/hero-3.png',
+    title: 'WEAR YOUR\nSTORY',
+    subtitle: 'Fine jewellery that speaks without words',
+    buttonText: 'Explore Now',
+    buttonLink: '/shop',
+  },
+  {
+    id: 'default-4',
+    image: '/hero-4.png',
+    title: 'GIFTED WITH\nGRACE',
+    subtitle: 'Thoughtfully curated pieces for someone special',
+    buttonText: 'View Gifts',
+    buttonLink: '/shop',
+  },
+  {
+    id: 'default-5',
+    image: '/hero-premium.png',
+    title: 'PREMIUM\nCOLLECTION',
+    subtitle: 'The finest craftsmanship, exclusively at Vionara',
+    buttonText: 'Shop Premium',
+    buttonLink: '/shop',
+  },
+];

@@ -1,0 +1,359 @@
+@import "tailwindcss";
+
+/* ─── Dynamic Theme Variables (overridden by ThemeContext on load) ─── */
+:root {
+  --theme-primary: #C9A14A;
+  --theme-bg: #FFFFFF;
+  --theme-text: #121212;
+  --theme-secondary: #999999;
+}
+
+@theme {
+  --color-gold: #CBA135;
+  --color-gold-light: #E0C16A;
+  --color-gold-dark: #A37E22;
+  --color-beige-light: #F9F6F1;
+  --color-beige: #F4EDE4;
+  --color-charcoal: #121212;
+  --color-charcoal-light: #2A2A2A;
+  --color-ivory: #FCFAF7;
+  --color-ivory-dark: #F5F1EB;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  section, main, header, footer {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-charcoal);
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+@layer components {
+  /* ─── Buttons ─── */
+  .btn-gold {
+    background-color: var(--color-gold);
+    color: white;
+    padding: 14px 36px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-gold:hover {
+    background-color: var(--color-gold-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(203, 161, 53, 0.3);
+  }
+
+  .btn-outline-gold {
+    background: transparent;
+    color: var(--color-gold);
+    padding: 14px 36px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    border: 1px solid var(--color-gold);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-outline-gold:hover {
+    background-color: var(--color-gold);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(203, 161, 53, 0.2);
+  }
+
+  .btn-dark {
+    background-color: var(--color-charcoal);
+    color: white;
+    padding: 14px 36px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-dark:hover {
+    background-color: var(--color-charcoal-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    color: var(--color-charcoal);
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  /* ─── Marquee Scrolling Banner ─── */
+  .marquee-container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+  }
+
+  /* ─── Pill Search Bar ─── */
+  .pill-search {
+    background: #f0f0f0;
+    border-radius: 999px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .pill-search:focus-within {
+    background: #fff;
+    border-color: var(--color-gold);
+    box-shadow: none;
+  }
+
+  .pill-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: var(--color-charcoal);
+  }
+
+  .pill-search input::placeholder {
+    color: #999;
+  }
+
+  /* ─── Category Card ─── */
+  .category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    cursor: pointer;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .category-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .category-card img {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .category-card:hover img {
+    transform: scale(1.08);
+  }
+
+  /* ─── Filter Tab ─── */
+  .filter-tab {
+    padding: 10px 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--color-charcoal);
+    white-space: nowrap;
+  }
+
+  .filter-tab:hover {
+    border-color: var(--color-charcoal);
+  }
+
+  .filter-tab.active {
+    background: var(--color-charcoal);
+    color: white;
+    border-color: var(--color-charcoal);
+  }
+
+  .active-tab {
+    background-color: black;
+    color: var(--color-gold);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .shadow-luxury {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-luxury-hover {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+  }
+
+  .text-shimmer-gold {
+    background: linear-gradient(120deg, var(--color-gold-dark) 0%, var(--color-gold-light) 25%, #fff 50%, var(--color-gold-light) 75%, var(--color-gold-dark) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s ease-in-out infinite;
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ─── Keyframes ─── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Scrollbar: hidden visually, scroll still works ─── */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Third-party Overrides ─── */
+.swiper-pagination-bullet-active {
+  background: var(--color-gold) !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-gold) !important;
+}
